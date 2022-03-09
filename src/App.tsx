@@ -1,7 +1,5 @@
-import React from "react";
 import "./App.css";
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
-import { Countries } from "./components/Countries";
 import { RoutesConfig } from "./routes/RoutesConfig";
 
 const client = new ApolloClient({

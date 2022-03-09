@@ -78,18 +78,16 @@ describe("getCountries function return", () => {
   it("all countries from input data", () => {
     expect(getCountries(mockData, "").length).toEqual(5);
   });
-  it("all countries from input data", () => {
-    expect(getCountries(mockData, "").length).toEqual(5);
-  });
-  it("countries from continent Asia arg: AS ", () => {
+
+  it("countries from continent Asia arg: AS", () => {
     expect(getCountries(mockData, "AS").length).toEqual(3);
   });
 
-  it("countries from continent Africa arg: AF ", () => {
+  it("countries from continent Africa arg: AF", () => {
     expect(getCountries(mockData, "AF").length).toEqual(2);
   });
 
-  it("all countries objects ", () => {
+  it("all countries objects", () => {
     expect(getCountries(mockData, "")).toEqual(mockResult);
   });
 
@@ -97,7 +95,7 @@ describe("getCountries function return", () => {
     expect(getCountries(mockData, "xxxx")).toEqual([]);
   });
 
-  it("no data ", () => {
+  it("no data", () => {
     expect(getCountries(mockData, "xxx").length).toEqual(0);
   });
 });

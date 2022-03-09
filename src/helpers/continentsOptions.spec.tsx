@@ -64,7 +64,7 @@ const mockResult = [
 ];
 
 describe("continentsOptions function", () => {
-  it("returns two objects ", () => {
+  it("returns two objects", () => {
     expect(continentsOptions(mockData)?.length).toEqual(2);
   });
 
