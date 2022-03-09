@@ -42,8 +42,8 @@ export const Countries = () => {
         setText(e.target.value)
     }
 
-    const onChangeContinent = (option: SingleValue<SelectOption>) => {
-        if (option) setOption(option.value)
+    const onChangeContinent = (selectedOption: SingleValue<SelectOption>) => {
+        if (selectedOption) setOption(selectedOption.value)
     }
 
     return (
