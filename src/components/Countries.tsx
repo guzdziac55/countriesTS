@@ -1,16 +1,15 @@
 import React, { useState, useMemo } from "react";
 import { useQuery, gql } from "@apollo/client";
-import Select from "react-select";
-import classes from "./Countries.module.css";
+import Select, { SingleValue } from "react-select";
+import { filterCountries } from "../helpers/filterCountries";
+import { getCountries } from "../helpers/getCountries";
+import { continentsOptions } from "../helpers/continentsOptions";
 import { CountryItem } from "./CountryItem";
-// import { continentsOptions } from "../helpers/continentsOptions";
-// import { getCountries } from "../helpers/getCountries";
-// import { filterCountries } from "../helpers/filterCountries";
+import classes from "./Countries.module.css";
 
 interface Country {
   code: string;
   name: string;
-  // later emoji and languages
 }
 
 interface Continent {
@@ -22,6 +21,11 @@ interface Continent {
 interface ContinentData {
   continents: Continent[];
 }
+
+type Option = {
+  label: string;
+  value: string;
+};
 
 const GET_ALL_DATA = gql`
   query {
@@ -38,26 +42,25 @@ const GET_ALL_DATA = gql`
 
 export const Countries = () => {
   const { loading, error, data } = useQuery<ContinentData>(GET_ALL_DATA);
-  const [option, setOption] = useState("");
-  const [text, setText] = useState("");
+  const [option, setOption] = useState<string>("");
+  const [text, setText] = useState<string>("");
 
-  console.log(data);
-  // // const countries = useMemo(() => allCountries(data), [data]);
-  // const continents = useMemo(() => continentsOptions(data), [data]);
+  const continents = useMemo(() => continentsOptions(data), [data]);
 
-  // if (loading) return <p>Loading...</p>;
-  // if (error) return <p>Error :(</p>;
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error :(</p>;
+  if (!data) return <div>No data Displayed</div>;
 
-  // const selectedCountries = getCountries(data, option);
-  // const filteredCountries = filterCountries(selectedCountries, text);
+  const selectedCountries = getCountries(data, option);
+  const filteredCountries = filterCountries(selectedCountries, text);
 
-  // const handleChange = (option) => {
-  //   setOption(option.value);
-  // };
+  const onChangeText = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setText(e.target.value);
+  };
 
-  // const handleTextChange = (e) => {
-  //   setText(e.target.value);
-  // };
+  const onChangeContinent = (option: SingleValue<Option>) => {
+    if (option) setOption(option.value);
+  };
 
   return (
     <>
@@ -65,17 +68,16 @@ export const Countries = () => {
       {loading && <p>{loading}</p>}
       {error && <p>{error}</p>}
 
-      {/* <input value={text} onChange={(e) => handleTextChange(e)}></input> */}
-      {/* <Select options={continents} onChange={handleChange}></Select> */}
-
+      <input value={text} onChange={(e) => onChangeText(e)}></input>
+      <Select options={continents} onChange={onChangeContinent}></Select>
       <div className={classes.container}>
-        {/* {filteredCountries.map((country) => (
+        {filteredCountries.map((country) => (
           <CountryItem
             name={country.name}
             code={country.code}
             key={country.code}
           />
-        ))} */}
+        ))}
       </div>
     </>
   );

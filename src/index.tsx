@@ -3,18 +3,13 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
-
-const client = new ApolloClient({
-  uri: "https://countries.trevorblades.com/",
-  cache: new InMemoryCache(),
-});
+import { BrowserRouter } from "react-router-dom";
 
 ReactDOM.render(
   <React.StrictMode>
-    <ApolloProvider client={client}>
+    <BrowserRouter>
       <App />
-    </ApolloProvider>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")
 );
