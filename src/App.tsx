@@ -12,11 +12,11 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-      {/* <RoutesConfig> */}
-      <div className="App">
-        <Countries />
-      </div>
-      {/* </RoutesConfig> */}
+      <RoutesConfig>
+        <div className="App">
+          <Countries />
+        </div>
+      </RoutesConfig>
     </ApolloProvider>
   );
 }
