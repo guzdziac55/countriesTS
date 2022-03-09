@@ -45,6 +45,9 @@ export const Countries = () => {
   const [option, setOption] = useState<string>("");
   const [text, setText] = useState<string>("");
 
+  console.log("our data");
+  console.log(data);
+
   const continents = useMemo(() => continentsOptions(data), [data]);
 
   if (loading) return <p>Loading...</p>;
