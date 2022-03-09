@@ -1,14 +1,14 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { Countries } from "../components/Countries";
-import { CountryDetails } from "../components/CountryDetails";
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { Countries } from '../components/Countries'
+import { CountryDetails } from '../components/CountryDetails'
 
 export const RoutesConfig = () => {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route index element={<Countries />} />
-        <Route path=":countryCode" element={<CountryDetails />}></Route>
-      </Routes>
-    </BrowserRouter>
-  );
-};
+    return (
+        <BrowserRouter>
+            <Routes>
+                <Route index element={<Countries />} />
+                <Route path=":countryCode" element={<CountryDetails />}></Route>
+            </Routes>
+        </BrowserRouter>
+    )
+}
