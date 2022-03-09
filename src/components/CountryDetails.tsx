@@ -1,5 +1,6 @@
 import { useParams } from "react-router";
 import { useQuery, gql } from "@apollo/client";
+import { CountryInfo } from "./types";
 
 const GET_COUNTRY = gql`
   query GetCountry($countryCode: ID!) {
@@ -14,15 +15,6 @@ const GET_COUNTRY = gql`
   }
 `;
 
-interface Country {
-  code: string;
-  name: string;
-  emoji: string;
-  languages: {
-    name: string;
-  }[];
-}
-
 export const CountryDetails = () => {
   const { countryCode } = useParams();
 
@@ -34,7 +26,7 @@ export const CountryDetails = () => {
   if (error) return <p>Error :(</p>;
   if (!data) return <p>there is no data </p>;
 
-  const { country }: { country: Country } = data;
+  const { country }: { country: CountryInfo } = data;
 
   return (
     <div>

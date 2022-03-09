@@ -6,26 +6,7 @@ import { getCountries } from "../helpers/getCountries";
 import { continentsOptions } from "../helpers/continentsOptions";
 import { CountryItem } from "./CountryItem";
 import classes from "./Countries.module.css";
-
-interface Country {
-  code: string;
-  name: string;
-}
-
-interface Continent {
-  code: string;
-  name: string;
-  countries: Country[];
-}
-
-interface ContinentData {
-  continents: Continent[];
-}
-
-type Option = {
-  label: string;
-  value: string;
-};
+import { ContinentData, SelectOption } from "./types";
 
 const GET_ALL_DATA = gql`
   query {
@@ -61,7 +42,7 @@ export const Countries = () => {
     setText(e.target.value);
   };
 
-  const onChangeContinent = (option: SingleValue<Option>) => {
+  const onChangeContinent = (option: SingleValue<SelectOption>) => {
     if (option) setOption(option.value);
   };
 
