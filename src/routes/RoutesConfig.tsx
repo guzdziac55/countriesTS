@@ -7,7 +7,7 @@ export const RoutesConfig = () => {
     <BrowserRouter>
       <Routes>
         <Route index element={<Countries />} />
-        <Route path=":code" element={<CountryDetails />}></Route>
+        <Route path=":countryCode" element={<CountryDetails />}></Route>
       </Routes>
     </BrowserRouter>
   );

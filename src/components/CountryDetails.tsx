@@ -1,11 +1,9 @@
-import React from "react";
 import { useParams } from "react-router";
 import { useQuery, gql } from "@apollo/client";
-import { count } from "console";
 
 const GET_COUNTRY = gql`
-  query Country($code: ID!) {
-    country(code: $code) {
+  query GetCountry($countryCode: ID!) {
+    country(code: $countryCode) {
       name
       code
       emoji
@@ -16,46 +14,38 @@ const GET_COUNTRY = gql`
   }
 `;
 
-// interface CountryDetailsProps {
-//   code: string;
-//   name: string;
-//   emoji: string;
-//   languages: {
-//     name: string;
-//   }[];
-// }
-
-// interface CountryVariable {
-//   code: string | undefined;
-// }
+interface Country {
+  code: string;
+  name: string;
+  emoji: string;
+  languages: {
+    name: string;
+  }[];
+}
 
 export const CountryDetails = () => {
-  const { code } = useParams();
-
-  console.log("aaaaaaaaa");
-  console.log(code);
+  const { countryCode } = useParams();
 
   const { loading, error, data } = useQuery(GET_COUNTRY, {
-    variables: { code },
+    variables: { countryCode },
   });
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;
   if (!data) return <p>there is no data </p>;
 
-  const abc = { ...data.country };
-  const { name, emoji, languages } = abc;
+  const { country }: { country: Country } = data;
 
   return (
     <div>
-      {data && (
+      {country && (
         <div>
-          <p>{data.code}</p>
-          <p>{data.name}</p>
-          <p>{data.emoji}</p>
-          {/* {data.languages.map((language) => (
-            <p>{language.name}</p>
-          ))} */}
+          <p>{country.code}</p>
+          <p>{country.name}</p>
+          <p>{country.emoji}</p>
+          {country.languages.map((language) => (
+            <p key={language.name}>{language.name}</p>
+          ))}
         </div>
       )}
     </div>

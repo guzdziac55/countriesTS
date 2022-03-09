@@ -1,6 +1,3 @@
-// input data =>
-// all data
-
 interface Country {
   code: string;
   name: string;
@@ -16,8 +13,6 @@ interface Continent {
 interface ContinentData {
   continents: Continent[];
 }
-
-//  array of obj key
 
 type SelectOption = {
   label: string;

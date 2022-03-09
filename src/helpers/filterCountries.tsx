@@ -3,10 +3,10 @@ type Country = {
   name: string;
 };
 
-export function filterCountries(countries: Country[], input: string) {
-  if (input === "") return countries;
+export function filterCountries(countries: Country[], filterPhrase: string) {
+  if (filterPhrase === "") return countries;
   const filtered = countries.filter((country) =>
-    country.name.toLowerCase().includes(input.toLowerCase())
+    country.name.toLowerCase().includes(filterPhrase.toLowerCase())
   );
 
   return filtered;
