@@ -37,15 +37,18 @@ export const CountryDetails = () => {
 
     return (
         <div className=".h-screen flex justify-center">
-            <div className="max-w-md w-full my-5 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+            <div className="max-w-md w-full my-5 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-400 dark:border-gray-700">
                 <div className="flex flex-col items-center p-5">
-                    <h1 className="mb-1 text-xl font-medium text-gray-900 dark:text-white">
-                        {country.name}
-                    </h1>
-                    <div className="text-xl text-center font-bold">
-                        {country.emoji}
+                    <div className="flex flex-row">
+                        <h1 className="mb-1 text-xl font-medium text-gray-900 dark:text-white ">
+                            {country.name}
+                        </h1>
+                        <span className="mx-0.5 -translate-y-0.5">
+                            {country.emoji}
+                        </span>
                     </div>
-                    <span className="text-sm text-gray-500 dark:text-gray-400">
+
+                    <span className="text-lg text-gray-500 dark:text-gray-400">
                         {country.code}
                     </span>
 
