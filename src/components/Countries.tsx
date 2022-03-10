@@ -5,7 +5,7 @@ import { filterCountries } from '../helpers/filterCountries'
 import { getCountries } from '../helpers/getCountries'
 import { continentsOptions } from '../helpers/continentsOptions'
 import { CountryItem } from './CountryItem'
-import classes from './Countries.module.css'
+// import classes from './Countries.module.css'
 import { ContinentData, SelectOption } from './types'
 
 const GET_ALL_DATA = gql`
@@ -48,13 +48,27 @@ export const Countries = () => {
 
     return (
         <>
-            <h1>Country list:</h1>
+            <h1 className="text-3xl mt-5 text-center font-bold">
+                Select country
+            </h1>
+            {/*  input + select here */}
+            <div className="flex my-5 flex-column justify-center gap-10">
+                <input
+                    placeholder="Find Country ..."
+                    className="shadow appearance-none border rounded w-52 px-4 text-gray-700 leading-tight"
+                    value={text}
+                    onChange={(e) => onChangeText(e)}
+                ></input>
+                <Select
+                    className="shadow appearance-none border rounded w-52 text-gray-700 leading-tight"
+                    options={continents}
+                    onChange={onChangeContinent}
+                ></Select>
+            </div>
             {loading && <p>{loading}</p>}
             {error && <p>{error}</p>}
 
-            <input value={text} onChange={(e) => onChangeText(e)}></input>
-            <Select options={continents} onChange={onChangeContinent}></Select>
-            <div className={classes.container}>
+            <div className="flex flex-row flex-wrap m-5 p-5 justify-center align-center bg-indigo-50 rounded-xl shadow leading-tight">
                 {filteredCountries.map((country) => (
                     <CountryItem
                         name={country.name}

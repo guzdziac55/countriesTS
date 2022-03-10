@@ -29,17 +29,31 @@ export const CountryDetails = () => {
     const { country }: { country: CountryInfo } = data
 
     return (
-        <div>
-            {country && (
-                <div>
-                    <p>{country.code}</p>
-                    <p>{country.name}</p>
-                    <p>{country.emoji}</p>
-                    {country.languages.map((language) => (
-                        <p key={language.name}>{language.name}</p>
-                    ))}
+        <div className=".h-screen flex justify-center">
+            <div className="max-w-sm my-5 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+                <div className="flex flex-col items-center p-5">
+                    <h1 className="mb-1 text-xl font-medium text-gray-900 dark:text-white">
+                        {country.name}
+                    </h1>
+                    <div className="text-xl text-center font-bold">
+                        {country.emoji}
+                    </div>
+                    <span className="text-sm text-gray-500 dark:text-gray-400">
+                        {country.code}
+                    </span>
+
+                    <h2 className="text-xl font-medium text-center text-gray-900">
+                        Languages
+                    </h2>
+                    <div className="flex flex-row flex-wrap mt-2 justify-center">
+                        {country.languages.map((language) => (
+                            <div className="bg-indigo-800 m-2 p-1 px-5 rounded text-white">
+                                <p key={language.name}>{language.name}</p>
+                            </div>
+                        ))}
+                    </div>
                 </div>
-            )}
+            </div>
         </div>
     )
 }

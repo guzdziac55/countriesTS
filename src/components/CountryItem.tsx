@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import classes from './CountryItem.module.css'
 
 interface CountryItemProps {
     code: string
@@ -9,8 +8,11 @@ interface CountryItemProps {
 
 export const CountryItem: React.FC<CountryItemProps> = ({ code, name }) => {
     return (
-        <Link to={`${code}`}>
-            <div className={classes.item}>{`${name} - ${code}`}</div>
+        <Link
+            className="bg-indigo-800 m-2 p-2 px-4 rounded text-white cursor-pointer hover:bg-indigo-900 hover:-translate-y-0.5"
+            to={`${code}`}
+        >
+            <p className="">{`${name} - ${code}`}</p>
         </Link>
     )
 }
