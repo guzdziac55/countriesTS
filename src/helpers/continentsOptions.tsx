@@ -1,32 +1,14 @@
-interface Country {
-    code: string
-    name: string
-    // later emoji and languages
-}
-
-interface Continent {
-    code: string
-    name: string
-    countries: Country[]
-}
-
-interface ContinentData {
-    continents: Continent[]
-}
-
-type SelectOption = {
-    label: string
-    value: string
-}[]
+import { ContinentData, SelectOption } from '../components/types'
 
 export const continentsOptions = (
     data: ContinentData | undefined
-): SelectOption | undefined => {
+): SelectOption[] | undefined => {
     if (data) {
-        let result: SelectOption = []
+        let result: SelectOption[] = []
         data.continents.forEach((continent) => {
             result.push({ label: continent.name, value: continent.code })
         })
         return result
     }
+    return undefined
 }

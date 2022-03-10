@@ -1,17 +1,4 @@
-type Country = {
-    code: string
-    name: string
-}
-
-interface Continent {
-    code: string
-    name: string
-    countries: Country[]
-}
-
-interface ContinentData {
-    continents: Continent[]
-}
+import { ContinentData, Country } from '../components/types'
 
 export function getCountries(
     { continents }: ContinentData,
@@ -21,6 +8,6 @@ export function getCountries(
         ? continents.filter((continent) => continent.code === code)
         : continents
 
-    // Alternatywnie: filteredContinents.map(continent => continent.countries).flat();
+    // Alt version: filteredContinents.map(continent => continent.countries).flat();
     return filteredContinents.flatMap((continent) => continent.countries)
 }

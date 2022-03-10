@@ -5,7 +5,6 @@ import { filterCountries } from '../helpers/filterCountries'
 import { getCountries } from '../helpers/getCountries'
 import { continentsOptions } from '../helpers/continentsOptions'
 import { CountryItem } from './CountryItem'
-// import classes from './Countries.module.css'
 import { ContinentData, SelectOption } from './types'
 
 const GET_ALL_DATA = gql`
@@ -59,7 +58,7 @@ export const Countries = () => {
                 Select country
             </h1>
             {/*  input + select here */}
-            <div className="flex my-5 flex-column justify-center gap-10">
+            <div className="flex my-5 flex-column justify-center gap-5">
                 <input
                     placeholder="Find Country ..."
                     className="shadow appearance-none border rounded w-52 px-4 text-gray-700 leading-tight"

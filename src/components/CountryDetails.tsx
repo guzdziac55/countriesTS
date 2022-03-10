@@ -34,6 +34,8 @@ export const CountryDetails = () => {
         )
 
     const { country }: { country: CountryInfo } = data
+    // TODO: I didn't manage to type useQuery properly, this is a temporary fix.
+    // const country = data.country as CountryInfo
 
     return (
         <div className=".h-screen flex justify-center">

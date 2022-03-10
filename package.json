@@ -1,6 +1,8 @@
 {
-    "name": "my-app",
-    "version": "0.1.0",
+    "name": "country-picker",
+    "author": "Dawid Guzik",
+    "version": "1.0.0",
+    "license": "MIT",
     "private": true,
     "dependencies": {
         "@apollo/client": "^3.5.10",
