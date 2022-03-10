@@ -2,17 +2,17 @@
 
 Hi ! Here is an example of my implementation of a recruitment task.
 
-Application with the use of:
-TypeScript + React with CRA
-Apollo Client with GraphQL API
-React Router
-Jest + RTL
-Code style is enforced via Eslint and Prettier. CI is set up via GitHub
-Actions.
+-   Application with the use of:
+-   TypeScript + React with CRA
+-   Apollo Client with GraphQL API
+-   React Router
+-   Jest + RTL
+-   Code style is enforced via Eslint and Prettier. CI is set up via GitHub
+-   Actions.
 
 # Demo link:
 
-[PomodoroApp](https://countryts-fabc0.web.app/)
+-   [Country picker](https://countryts-fabc0.web.app/) - live view !
 
 # Getting Started with Create React App
 
