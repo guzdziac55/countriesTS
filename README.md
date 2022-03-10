@@ -1,46 +1,120 @@
-# Getting Started with Create React App
+# Country picker - recruitment task.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Hi ! Here is an example of my implementation of a recruitment task.
 
-## Available Scripts
+Application with the use of:
+TypeScript + React with CRA
+Apollo Client with GraphQL API
+React Router
+Jest + RTL
+Code style is enforced via Eslint and Prettier. CI is set up via GitHub
+Actions.
 
-In the project directory, you can run:
+# Demo link:
 
-### `npm start`
+[PomodoroApp](https://react-http-b5eef.web.app/)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Overview
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+The application was written for educational purposes. I am a novice programmer who is eager to learn new technologies. As I used this application on a daily basis, I decided to write it myself from scratch using React and its new features.
 
-### `npm test`
+## Features
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+-   Creating a to-do list.
+-   Creating notes for to-do tasks.
+-   Stopwatch for work control.
+-   Three work modes that automatically calculate when you should take a break.
+-   More settings such as (notification sounds, mode times, automation)
+    dynamic theme.
+-   Creating user accounts.
+-   Create TaskList Templates.
+-   Login system.
+-   Storing data locally with the possibility of creating an account and storing data on the server.
+-   Responsive design.
+-   User Avatar picker using external API.
 
-### `npm run build`
+## Technologies
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### Project is created with:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+-   React v17 (using Hooks).
+-   Redux ( with toolkit ) .
+-   React Router v6.
+-   LocalStorage with persist library.
+-   Framer Motion - animations.
+-   Firebase (data manage) - realtimeDatabase & auth.
+-   React-Toastify - for notifications.
+-   Css modules for styling.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## What could be done better
 
-### `npm run eject`
+#### A list of things that the current one I could be able to improve:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+-   better props passing to child components.
+-   firebase main state should be done with objects => firebase convert empty arrays for falsy values.
+-   many smaller components, greater reusability.
+-   not implementing scss from the very beginning.
+-   more later ...
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# Getting Started
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Prerequisites
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+-   Install Node JS
+    Refer to https://nodejs.org/en/ to install nodejs
+-   Install create-react-app npm package globally. This will help to easily run the project and also build the source files easily. Use the following command to install create-react-app
 
-## Learn More
+```sh
+npm install -g create-react-app
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+-   FIREBASE INSTRUCTIONS
+-   If you want to use your own database. You need to generate an API key using firebase.
+    [Firebase basisc](https://www.youtube.com/watch?v=rQvOAnNvcNQ)
+    [Firebase Website](https://firebase.google.com/)
+-   edit config inside firebase.js
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Cloning and Running the Application
+
+To get a local copy up and running follow these simple steps.
+
+### Installation
+
+1. Clone the repo
+    ```sh
+    git clone https://github.com/guzdziac55/pomodoro-react.git
+    ```
+2. Go to the App folder
+    ```sh
+    cd pomodoro-react
+    ```
+3. Install NPM packages
+    ```sh
+    npm install
+    ```
+4. Run the dev server
+
+    ```sh
+    npm start
+    ```
+
+    ```sh
+     ### The Application Runs on localhost:3000
+    ```
+
+## Contact
+
+Dawid Guzik - [/myGit](https://github.com/guzdziac55/) - daw.guzik@gmail.com
+
+Project Link: [github.com/guzdziac55/pomodoro-react](https://github.com/guzdziac55/pomodoro-react)
+
+## License
+
+This project is not created for commercial purposes - the original application can be found at the link:
+[/originalPomodoro](https://pomofocus.io/)
+
+## Inspiration
+
+Inspiration, and more about pomodoro APP.
+
+-   [original-pomodoro](https://pomofocus.io/)
