@@ -9,8 +9,7 @@ Recruitment task done for: "Jutro Medical"
 -   Apollo Client with GraphQL API
 -   React Router
 -   Jest + RTL
--   Code style is enforced via Eslint and Prettier. CI is set up via GitHub
--   Actions.
+-   Code style is enforced via Eslint and Prettier. CI is set up via GitHub Actions.
 
 # Demo link:
 
