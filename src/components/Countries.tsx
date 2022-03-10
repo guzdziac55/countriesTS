@@ -31,9 +31,16 @@ export const Countries = () => {
 
     const continents = useMemo(() => continentsOptions(data), [data])
 
-    if (loading) return <p>Loading...</p>
-    if (error) return <p>Error :(</p>
-    if (!data) return <div>No data Displayed</div>
+    if (loading)
+        return <p className="text-3xl mt-5 text-center font-bold">Loading...</p>
+    if (error)
+        return <p className="text-3xl mt-5 text-center font-bold">Error :(</p>
+    if (!data)
+        return (
+            <div className="text-3xl mt-5 text-center font-bold">
+                No data Displayed
+            </div>
+        )
 
     const selectedCountries = getCountries(data, option)
     const filteredCountries = filterCountries(selectedCountries, text)
@@ -65,8 +72,6 @@ export const Countries = () => {
                     onChange={onChangeContinent}
                 ></Select>
             </div>
-            {loading && <p>{loading}</p>}
-            {error && <p>{error}</p>}
 
             <div className="flex flex-row flex-wrap m-5 p-5 justify-center align-center bg-indigo-50 rounded-xl shadow leading-tight">
                 {filteredCountries.map((country) => (

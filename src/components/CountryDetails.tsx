@@ -22,15 +22,22 @@ export const CountryDetails = () => {
         variables: { countryCode },
     })
 
-    if (loading) return <p>Loading...</p>
-    if (error) return <p>Error :(</p>
-    if (!data) return <p>there is no data </p>
+    if (loading)
+        return <p className="text-3xl mt-5 text-center font-bold">Loading...</p>
+    if (error)
+        return <p className="text-3xl mt-5 text-center font-bold">Error :(</p>
+    if (!data)
+        return (
+            <p className="text-3xl mt-5 text-center font-bold">
+                there is no data
+            </p>
+        )
 
     const { country }: { country: CountryInfo } = data
 
     return (
         <div className=".h-screen flex justify-center">
-            <div className="max-w-sm my-5 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+            <div className="max-w-md w-full my-5 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
                 <div className="flex flex-col items-center p-5">
                     <h1 className="mb-1 text-xl font-medium text-gray-900 dark:text-white">
                         {country.name}
