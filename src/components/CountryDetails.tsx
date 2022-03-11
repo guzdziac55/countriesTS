@@ -17,7 +17,6 @@ const GET_COUNTRY = gql`
 
 export const CountryDetails = () => {
     const { countryCode } = useParams()
-
     const { loading, error, data } = useQuery(GET_COUNTRY, {
         variables: { countryCode },
     })

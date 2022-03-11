@@ -25,9 +25,6 @@ export const Countries = () => {
     const [option, setOption] = useState<string>('')
     const [text, setText] = useState<string>('')
 
-    console.log('our data')
-    console.log(data)
-
     const continents = useMemo(() => continentsOptions(data), [data])
 
     if (loading)
@@ -57,7 +54,6 @@ export const Countries = () => {
             <h1 className="text-3xl mt-5 text-center font-bold">
                 Select country
             </h1>
-            {/*  input + select here */}
             <div className="flex my-5 flex-column justify-center gap-5">
                 <input
                     placeholder="Find Country ..."
@@ -72,7 +68,8 @@ export const Countries = () => {
                 ></Select>
             </div>
 
-            <div className="flex flex-row flex-wrap m-5 p-5 justify-center align-center bg-indigo-50 rounded-xl shadow leading-tight">
+            <div className="grid grid-cols-auto-fill gap-1 p-5 m-5 rounded-xl drop-shadow-md">
+                {/* <div className="flex flex-row flex-wrap m-5 p-5 justify-center align-center bg-indigo-50 rounded-xl shadow leading-tight"> */}
                 {filteredCountries.map((country) => (
                     <CountryItem
                         name={country.name}
