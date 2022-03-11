@@ -58,7 +58,7 @@ export const CountryDetails = () => {
                     </h2>
                     <div className="flex flex-row flex-wrap mt-2 justify-center">
                         {country.languages.map((language) => (
-                            <div className="bg-indigo-800 m-2 p-1 px-5 rounded text-white">
+                            <div className="bg-indigo-400 m-2 p-1 px-5 rounded text-white">
                                 <p key={language.name}>{language.name}</p>
                             </div>
                         ))}
