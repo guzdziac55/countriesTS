@@ -56,7 +56,7 @@ export const Countries = () => {
             <div className="flex my-5 flex-column justify-center gap-5">
                 <input
                     placeholder="Find Country ..."
-                    className="shadow appearance-none border rounded w-52 px-4 text-gray-700 leading-tight"
+                    className="shadow appearance-none border rounded w-48  px-4 text-gray-700 leading-tight"
                     value={text}
                     onChange={(e) => onChangeText(e)}
                 ></input>
