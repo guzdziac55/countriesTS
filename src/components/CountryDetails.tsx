@@ -2,6 +2,14 @@ import { useParams } from 'react-router'
 import { useQuery, gql } from '@apollo/client'
 import { CountryInfo } from './types'
 
+interface FetchCountryDetails {
+    country: CountryInfo
+}
+
+type CountryVariable = {
+    countryCode: string | undefined
+}
+
 const GET_COUNTRY = gql`
     query GetCountry($countryCode: ID!) {
         country(code: $countryCode) {
@@ -17,7 +25,10 @@ const GET_COUNTRY = gql`
 
 export const CountryDetails = () => {
     const { countryCode } = useParams()
-    const { loading, error, data } = useQuery(GET_COUNTRY, {
+    const { loading, error, data } = useQuery<
+        FetchCountryDetails,
+        CountryVariable
+    >(GET_COUNTRY, {
         variables: { countryCode },
     })
 
@@ -32,9 +43,7 @@ export const CountryDetails = () => {
             </p>
         )
 
-    const { country }: { country: CountryInfo } = data
-    // TODO: I didn't manage to type useQuery properly, this is a temporary fix.
-    // const country = data.country as CountryInfo
+    const country = data.country
 
     return (
         <div className=".h-screen flex justify-center">
@@ -58,8 +67,11 @@ export const CountryDetails = () => {
                     </h2>
                     <div className="flex flex-row flex-wrap mt-2 justify-center">
                         {country.languages.map((language) => (
-                            <div className="bg-indigo-400 m-2 p-1 px-5 rounded text-white">
-                                <p key={language.name}>{language.name}</p>
+                            <div
+                                key={language.name}
+                                className="bg-indigo-400 m-2 p-1 px-5 rounded text-white"
+                            >
+                                <p>{language.name}</p>
                             </div>
                         ))}
                     </div>

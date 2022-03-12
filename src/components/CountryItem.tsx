@@ -9,7 +9,7 @@ interface CountryItemProps {
 export const CountryItem: React.FC<CountryItemProps> = ({ code, name }) => {
     return (
         <Link
-            className="flex flex-col h-15 justify-center items-center bg-gray-100 h-32 w-32 m-1 p-1 align-center rounded text-sm text-gray-900  shadow-md cursor-pointer hover:bg-indigo-200 hover:-translate-y-0.5"
+            className="flex flex-col h-15 justify-center items-center bg-gray-100 h-32 w-32 m-1 p-1 align-center rounded text-sm text-gray-900  shadow-lg cursor-pointer hover:bg-indigo-200 hover:-translate-y-0.5"
             to={`${code}`}
         >
             <p className="text-center text-l ">{name}</p>
