@@ -1,5 +1,18 @@
-import { ContinentData } from '../components/types'
 import { getCountries } from './getCountries'
+type Country = {
+    code: string
+    name: string
+}
+
+interface Continent {
+    code: string
+    name: string
+    countries: Country[]
+}
+
+interface ContinentData {
+    continents: Continent[]
+}
 
 const mockData: ContinentData = {
     continents: [
@@ -63,26 +76,34 @@ const mockResult = [
 
 describe('getCountries function return', () => {
     it('all countries from input data', () => {
-        expect(getCountries(mockData, '').length).toEqual(5)
+        expect(getCountries(mockData, null).length).toEqual(5)
     })
 
     it('countries from continent Asia arg: AS', () => {
-        expect(getCountries(mockData, 'AS').length).toEqual(3)
+        expect(
+            getCountries(mockData, { label: 'Asia', value: 'AS' }).length
+        ).toEqual(3)
     })
 
     it('countries from continent Africa arg: AF', () => {
-        expect(getCountries(mockData, 'AF').length).toEqual(2)
+        expect(
+            getCountries(mockData, { label: 'Africa', value: 'AF' }).length
+        ).toEqual(2)
     })
 
     it('all countries objects', () => {
-        expect(getCountries(mockData, '')).toEqual(mockResult)
+        expect(getCountries(mockData, null)).toEqual(mockResult)
     })
 
     it('empty array', () => {
-        expect(getCountries(mockData, 'xxxx')).toEqual([])
+        expect(getCountries(mockData, { label: 'xxx', value: 'xxxx' })).toEqual(
+            []
+        )
     })
 
     it('no data', () => {
-        expect(getCountries(mockData, 'xxx').length).toEqual(0)
+        expect(
+            getCountries(mockData, { label: 'xxx', value: 'xxxx' }).length
+        ).toEqual(0)
     })
 })

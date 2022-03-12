@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react'
 import { useQuery, gql } from '@apollo/client'
-import Select, { SingleValue } from 'react-select'
+import Select from 'react-select'
 import { filterCountries } from '../helpers/filterCountries'
 import { getCountries } from '../helpers/getCountries'
 import { continentsOptions } from '../helpers/continentsOptions'
@@ -22,9 +22,8 @@ const GET_ALL_DATA = gql`
 
 export const Countries = () => {
     const { loading, error, data } = useQuery<ContinentData>(GET_ALL_DATA)
-    const [option, setOption] = useState<string>('')
+    const [option, setOption] = useState<SelectOption | null>(null)
     const [text, setText] = useState<string>('')
-
     const continents = useMemo(() => continentsOptions(data), [data])
 
     if (loading)
@@ -45,8 +44,8 @@ export const Countries = () => {
         setText(e.target.value)
     }
 
-    const onChangeContinent = (selectedOption: SingleValue<SelectOption>) => {
-        if (selectedOption) setOption(selectedOption.value)
+    const handleChange = (selectedOption: SelectOption | null) => {
+        setOption(selectedOption)
     }
 
     return (
@@ -62,15 +61,16 @@ export const Countries = () => {
                     onChange={(e) => onChangeText(e)}
                 ></input>
                 <Select
+                    value={option}
+                    isClearable={true}
                     className="shadow appearance-none border rounded w-52 text-gray-700 leading-tight"
                     options={continents}
-                    onChange={onChangeContinent}
+                    onChange={handleChange}
                 ></Select>
             </div>
 
             <div className="grid grid-cols-auto-fill gap-1 p-5 m-5 rounded-xl drop-shadow-md">
-                {/* <div className="flex flex-row flex-wrap m-5 p-5 justify-center align-center bg-indigo-50 rounded-xl shadow leading-tight"> */}
-                {filteredCountries.map((country) => (
+                {filteredCountries?.map((country) => (
                     <CountryItem
                         name={country.name}
                         code={country.code}

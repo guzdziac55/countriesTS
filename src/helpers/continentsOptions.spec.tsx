@@ -1,5 +1,19 @@
-import { ContinentData } from '../components/types'
 import { continentsOptions } from './continentsOptions'
+
+interface Country {
+    code: string
+    name: string
+}
+
+interface Continent {
+    code: string
+    name: string
+    countries: Country[]
+}
+
+interface ContinentData {
+    continents: Continent[]
+}
 
 const mockData: ContinentData = {
     continents: [
