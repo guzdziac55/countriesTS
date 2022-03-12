@@ -22,7 +22,7 @@ const GET_ALL_DATA = gql`
 
 export const Countries = () => {
     const { loading, error, data } = useQuery<ContinentData>(GET_ALL_DATA)
-    const [option, setOption] = useState<SelectOption | null>(null)
+    const [option, setOption] = useState<readonly SelectOption[]>([])
     const [text, setText] = useState<string>('')
     const continents = useMemo(() => continentsOptions(data), [data])
 
@@ -44,7 +44,7 @@ export const Countries = () => {
         setText(e.target.value)
     }
 
-    const handleChange = (selectedOption: SelectOption | null) => {
+    const handleChange = (selectedOption: readonly SelectOption[]) => {
         setOption(selectedOption)
     }
 
@@ -53,23 +53,24 @@ export const Countries = () => {
             <h1 className="text-3xl mt-5 text-center font-bold">
                 Select country
             </h1>
-            <div className="flex my-5 flex-column justify-center gap-5">
+            <div className="flex flex-col items-center mx-5 sm:flex-row sm:items-stretch my-5 justify-items-center gap-5 justify-center align-center">
                 <input
                     placeholder="Find Country ..."
-                    className="shadow appearance-none border rounded w-48  px-4 text-gray-700 leading-tight"
+                    className="shadow appearance-none border w-full h-10 sm:h-10 sm:w-1/4 rounded px-4 text-gray-700 leading-tight"
                     value={text}
                     onChange={(e) => onChangeText(e)}
                 ></input>
                 <Select
                     value={option}
+                    isMulti={true}
                     isClearable={true}
-                    className="shadow appearance-none border rounded w-52 text-gray-700 leading-tight"
+                    className="shadow appearance-none border rounded w-full sm:w-1/4 text-gray-700 leading-tight"
                     options={continents}
                     onChange={handleChange}
                 ></Select>
             </div>
 
-            <div className="grid grid-cols-auto-fill gap-1 p-5 m-5 rounded-xl drop-shadow-md">
+            <div className="grid justify-items-center align-center grid-cols-small-fill sm:grid-cols-auto-fill p-4 gap-4 sm:grid-cols-auto-fill sm:p-5 sm:m-5 rounded-xl drop-shadow-md">
                 {filteredCountries?.map((country) => (
                     <CountryItem
                         name={country.name}

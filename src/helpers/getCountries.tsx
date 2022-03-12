@@ -3,12 +3,18 @@ import { SelectOption } from '../components/types'
 
 export function getCountries(
     { continents }: ContinentData,
-    option: SelectOption | null
+    option: readonly SelectOption[] | null
 ): Country[] {
-    const filteredContinents = option
-        ? continents.filter((continent) => continent.code === option.value)
-        : continents // null
+    const filteredContinents = option?.length
+        ? option
+              .map((opt) =>
+                  continents.filter((continent) => continent.code === opt.value)
+              )
+              .flat()
+        : continents
 
+    console.log(filteredContinents)
+
+    return filteredContinents.map((continent) => continent.countries).flat()
     // Alt version: filteredContinents.map(continent => continent.countries).flat();
-    return filteredContinents.flatMap((continent) => continent.countries)
 }

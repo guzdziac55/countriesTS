@@ -81,13 +81,13 @@ describe('getCountries function return', () => {
 
     it('countries from continent Asia arg: AS', () => {
         expect(
-            getCountries(mockData, { label: 'Asia', value: 'AS' }).length
+            getCountries(mockData, [{ label: 'Asia', value: 'AS' }]).length
         ).toEqual(3)
     })
 
     it('countries from continent Africa arg: AF', () => {
         expect(
-            getCountries(mockData, { label: 'Africa', value: 'AF' }).length
+            getCountries(mockData, [{ label: 'Africa', value: 'AF' }]).length
         ).toEqual(2)
     })
 
@@ -96,14 +96,14 @@ describe('getCountries function return', () => {
     })
 
     it('empty array', () => {
-        expect(getCountries(mockData, { label: 'xxx', value: 'xxxx' })).toEqual(
-            []
-        )
+        expect(
+            getCountries(mockData, [{ label: 'xxx', value: 'xxxx' }])
+        ).toEqual([])
     })
 
     it('no data', () => {
         expect(
-            getCountries(mockData, { label: 'xxx', value: 'xxxx' }).length
+            getCountries(mockData, [{ label: 'xxx', value: 'xxxx' }]).length
         ).toEqual(0)
     })
 })
