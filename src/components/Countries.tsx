@@ -2,17 +2,26 @@ import React, { useState, useMemo } from 'react'
 import { useQuery, gql } from '@apollo/client'
 import Select from 'react-select'
 import { filterCountries } from '../helpers/filterCountries'
-import { getCountries } from '../helpers/getCountries'
-import { continentsOptions } from '../helpers/continentsOptions'
+// import { getCountries } from '../helpers/getCountries'
+// import { continentsOptions } from '../helpers/continentsOptions'
 import { CountryItem } from './CountryItem'
-import { ContinentData, SelectOption } from './types'
+import { SelectOption } from './types'
+import { getContinentsOptionsFromData } from '../helpers/continentsOptionsEasy'
 
-const GET_ALL_DATA = gql`
+import { ContinentsAndCountriesData } from './typ'
+import { getCountriesEasy } from '../helpers/getCountriesEasy'
+// import { count } from 'console'
+
+const GET_CONTINENTS_AND_COUNTRIES = gql`
     query {
         continents {
             code
             name
-            countries {
+        }
+        countries {
+            code
+            name
+            continent {
                 code
                 name
             }
@@ -20,11 +29,35 @@ const GET_ALL_DATA = gql`
     }
 `
 
+// const GET_ALL_DATA = gql`
+//     query {
+//         continents {
+//             code
+//             name
+//         }
+//         continents {
+//             code
+//             name
+//             countries {
+//                 code
+//                 name
+//             }
+//         }
+//     }
+// `
+
 export const Countries = () => {
-    const { loading, error, data } = useQuery<ContinentData>(GET_ALL_DATA)
+    const { loading, error, data } = useQuery<ContinentsAndCountriesData>(
+        GET_CONTINENTS_AND_COUNTRIES
+    )
+
     const [option, setOption] = useState<readonly SelectOption[]>([])
     const [text, setText] = useState<string>('')
-    const continents = useMemo(() => continentsOptions(data), [data])
+
+    const continentsSelectOptions = useMemo(
+        () => getContinentsOptionsFromData(data),
+        [data]
+    )
 
     if (loading)
         return <p className="text-3xl mt-5 text-center font-bold">Loading...</p>
@@ -37,8 +70,11 @@ export const Countries = () => {
             </div>
         )
 
-    const selectedCountries = getCountries(data, option)
+    const { countries } = data
+
+    const selectedCountries = getCountriesEasy(countries, option)
     const filteredCountries = filterCountries(selectedCountries, text)
+    // const selectedCountries = getCountries(data, option)
 
     const onChangeText = (e: React.ChangeEvent<HTMLInputElement>) => {
         setText(e.target.value)
@@ -65,7 +101,7 @@ export const Countries = () => {
                     isMulti={true}
                     isClearable={true}
                     className="shadow appearance-none border rounded w-full sm:w-1/4 text-gray-700 leading-tight"
-                    options={continents}
+                    options={continentsSelectOptions}
                     onChange={handleChange}
                 ></Select>
             </div>
