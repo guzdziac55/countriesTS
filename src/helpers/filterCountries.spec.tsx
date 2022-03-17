@@ -1,12 +1,8 @@
 import { filterCountries } from './filterCountries'
-
-type Country = {
-    code: string
-    name: string
-}[]
+import { Country } from './../components/types'
 
 describe('FilterCountries function:', () => {
-    const countries: Country = [
+    const countries: Country[] = [
         { code: 'PL', name: 'Poland' },
         { code: 'FR', name: 'Franch' },
         { code: 'DE', name: 'Germany' },

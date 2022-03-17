@@ -1,7 +1,4 @@
-type Country = {
-    code: string
-    name: string
-}
+import { Country } from './../components/types'
 
 export function filterCountries(countries: Country[], filterPhrase: string) {
     if (filterPhrase === '') return countries

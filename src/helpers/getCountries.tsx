@@ -16,5 +16,4 @@ export function getCountries(
     console.log(filteredContinents)
 
     return filteredContinents.map((continent) => continent.countries).flat()
-    // Alt version: filteredContinents.map(continent => continent.countries).flat();
 }
