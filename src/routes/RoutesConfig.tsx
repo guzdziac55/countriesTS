@@ -8,7 +8,10 @@ export const RoutesConfig = () => {
         <BrowserRouter>
             <Routes>
                 <Route index element={<Countries />} />
-                <Route path=":countryCode" element={<CountryDetails />}></Route>
+                <Route
+                    path="country/:countryCode"
+                    element={<CountryDetails />}
+                ></Route>
                 <Route path="*" element={<NotFound />} />
             </Routes>
         </BrowserRouter>

@@ -1,6 +1,9 @@
 import { useParams } from 'react-router'
 import { useQuery, gql } from '@apollo/client'
 import { CountryInfo } from './types'
+import { NotFound } from './NotFound '
+// import { useNavigate } from 'react-router'
+// import { Link } from 'react-router-dom'
 
 interface FetchCountryDetails {
     country: CountryInfo
@@ -24,6 +27,7 @@ const GET_COUNTRY = gql`
 `
 
 export const CountryDetails = () => {
+    // const navigate = useNavigate()
     const { countryCode } = useParams()
     const { loading, error, data } = useQuery<
         FetchCountryDetails,
@@ -31,17 +35,17 @@ export const CountryDetails = () => {
     >(GET_COUNTRY, {
         variables: { countryCode },
     })
+    console.log('our data')
+    console.log(data)
 
     if (loading)
         return <p className="text-3xl mt-5 text-center font-bold">Loading...</p>
     if (error)
         return <p className="text-3xl mt-5 text-center font-bold">Error :(</p>
-    if (!data)
-        return (
-            <p className="text-3xl mt-5 text-center font-bold">
-                there is no data
-            </p>
-        )
+    // if (!data) return <Link to="/oopps" />
+    if (!data?.country) {
+        return <NotFound />
+    }
 
     const country = data.country
 

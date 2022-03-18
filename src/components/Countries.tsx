@@ -1,5 +1,6 @@
 import React, { useState, useMemo } from 'react'
 import { useQuery, gql } from '@apollo/client'
+
 import Select from 'react-select'
 import { filterCountries } from '../helpers/filterCountries'
 import { getCountries } from '../helpers/getCountries'
@@ -23,7 +24,7 @@ const GET_ALL_DATA = gql`
 export const Countries = () => {
     const { loading, error, data } = useQuery<ContinentData>(GET_ALL_DATA)
     const [option, setOption] = useState<readonly SelectOption[]>([])
-    const [text, setText] = useState<string>('')
+    const [text, setText] = useState('')
     const continents = useMemo(() => continentsOptions(data), [data])
 
     if (loading)
